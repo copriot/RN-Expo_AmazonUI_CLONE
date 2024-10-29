@@ -1,0 +1,1 @@
+export const watergreen = '#9ee4d4'
