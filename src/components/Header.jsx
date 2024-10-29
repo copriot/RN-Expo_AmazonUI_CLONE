@@ -1,8 +1,11 @@
-import { StyleSheet, Text, View } from "react-native";
+import { Dimensions, StyleSheet, Text, TextInput, View } from "react-native";
 import React from "react";
 import { LinearGradient } from "expo-linear-gradient";
-import { watergreen, diffrentgreen, anothergreen, greey } from "../colors";
-import FontAwesome from "@expo/vector-icons/FontAwesome";
+import colors from "../colors";
+import { FontAwesome, AntDesign } from "@expo/vector-icons";
+
+const { width } = Dimensions.get("window");
+
 const Header = () => {
   return (
     <View>
@@ -10,11 +13,19 @@ const Header = () => {
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 0 }}
         style={styles.container}
-        colors={[watergreen, diffrentgreen, anothergreen]}
+        colors={[colors.watergreen, colors.diffrentgreen, colors.anothergreen]}
       >
         <View style={styles.inputBox}>
-          <FontAwesome name="search" size={24} color={greey} />
+          <View style={styles.row}>
+            <FontAwesome name="search" size={24} color={colors.greey} />
+            <TextInput
+              placeholder="Search Amazon..."
+              style={styles.textInput}
+            />
+          </View>
+          <AntDesign name="scan1" size={24} color={colors.greey} />
         </View>
+        <FontAwesome name="microphone" size={24} color={colors.greey} />
       </LinearGradient>
     </View>
   );
@@ -23,6 +34,26 @@ const Header = () => {
 export default Header;
 
 const styles = StyleSheet.create({
-  container: {},
-  inputBox: {},
+  container: {
+    padding: 10,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+  },
+  inputBox: {
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: "#ffff",
+    borderColor: colors.greey,
+    borderWidth: 1,
+    width: width * 0.9,
+    justifyContent: "space-between",
+    paddingHorizontal: width * 0.02,
+    borderRadius: 10,
+  },
+  textInput: { paddingVertical: 8 },
+  row: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
 });
